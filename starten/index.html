@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="../jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <script src="../jquery.min.js">
+        </script>
+        <script src="../jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+        <!-- User-generated css -->
+        <style>
+        </style>
+        <!-- User-generated js -->
+        <script>
+            try {
+
+    $(function() {
+
+    });
+
+  } catch (error) {
+    console.error("Your javascript has an error: " + error);
+  }
+        </script>
+		
+		  <script type="text/javascript" src="../cordova-2.4.0.js"></script>
+		  
+		  	<script>
+
+        /*rotate
+                    desc: Rotate a set of first level child objects based on tag name
+                    params:
+                            id = Rotate elements container id
+                            tag = Tag (nodeName - see textNode issue) of DOM objects to be cycled
+            */
+            function rotate(id, tag)
+            {
+
+                    /*Normalise string for later comparison*/
+                    tag = tag.toLowerCase();
+
+                    /*Get container DOM Object*/
+                    var el = document.getElementById(id),
+                            visibleIdentified = false;
+                            hasBeenSet = false,
+                            firstMatchingChild = false;;
+
+                    /*Iterate over children*/
+                    for(i = 0; i < el.childNodes.length; i++){
+
+                            /*Set child to var for ease of access*/
+                            var child = el.childNodes[i];
+
+                            /*If element has the correct nodeName and is a top level chlid*/
+                            if(child.parentNode == el && child.nodeName.toLowerCase() == tag){
+
+                                    /*Set first matching child in case the rotation is already on the last image*/
+                                    if(!firstMatchingChild)
+                                            firstMatchingChild = child;                
+
+                                    /*If child is visible */
+                                    if(child.style.display == "block"){
+
+                                            /*Take note that the visible element has been identified*/
+                                            visibleIdentified = true;
+
+                                            /*Toggle its visibility (display attribute)*/
+                                            child.style.display = "none";
+
+                                    /*Once the visibile item has been identified*/
+                                    }else if(visibleIdentified){
+
+                                            /*If the next item to become visible has been set*/
+                                            if(hasBeenSet){
+
+                                                    /*Toggle visibility (display attribute)*/
+                                                    child.style.display = "none"
+                                            }
+
+                                            /*Catch the next item to become visible*/
+                                            else{
+
+                                                    /*Toggle visibility (display attribute)*/
+                                                    child.style.display = "block";
+
+                                                    /*Take note that the next item has been made visible*/
+                                                    hasBeenSet = true;
+                                            }
+                                    }
+                            }
+                    }
+
+                    /*If the hasBeenSet is false then the first item is to be made visible
+                      - Only do so if the firstMatchingChild was identified, more or less redundant
+                            exception handling*/
+                    if(!hasBeenSet && firstMatchingChild)
+                                    firstMatchingChild.style.display = "block";
+
+            }
+
+            /*Declare cycle*/
+            // setInterval("rotate('smartimages','div')",2000);
+            </script>
+		  
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="b" data-role="header">
+                <h1>
+                    smartinfopage</h1>
+            </div>
+            <div data-role="content">
+             <img src="../devices.png" width="100%">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        Please select
+              </li>
+                    <li data-theme="c">
+                        <a href="http://www.smartinfopage.mobi/createaccountform.php" target="_blank" data-transition="slide">
+                            New smartinfopage
+                        </a>
+                  </li>
+                    <li data-theme="c">
+                        <a href="http://www.smartinfopage.mobi/loginform_en.php" target="_blank" data-transition="slide">
+                            Edit existing smartinfopage
+                        </a>
+                    </li>
+                </ul>
+                <br>
+                <br>
+                <a data-role="button" href="#about" data-transition="slide" data-icon="info" data-iconpos="left">
+                    About Smartinfopage
+                </a>
+                <a data-role="button" href="#contact" data-transition="slide" data-icon="info" data-iconpos="left">
+                    Contact
+            </a>
+            
+	
+			
+            </div>
+			
+			
+        </div>
+        
+<div data-role="page" id="about">
+    <div data-theme="b" data-role="header">
+        <h3>
+        About</h3>
+    </div>
+    <div data-role="content">
+       <a data-role="button" data-direction="reverse" data-rel="back" data-transition="flow"
+        href="#page1" data-icon="back" data-iconpos="left">
+            Back
+        </a>
+        
+        <br>
+        <div style=" text-align:center">
+                    <img style="width: 100%;" src="../start/logo_de.png" />
+		</div>
+        <br>
+
+      smartinfopage makes it easy to share your contact information and social media links with friends, business partners and customers.  Create your own smartinfopage now, it's free and simple to get started!<br>
+        <b><br>
+        Description</b><br><br>
+        Sharing all our contact information gets more and more difficult, as we use a myriad of services. Phone, Fax, E-Mail, Facebook, Twitter, LinkedIn etc... Sharing all of this information via business cards is difficult and cumbersome. Your customers and friends are mobile (400% growth since 2010!) and you should be too! 
+        smartinfopage is like a digital extension of your businss card. With just a few easy steps, you can be connected to the world. 
+        Create your mobile friendly smartinfopage today that adapts perfectly to smartphone screens!
+        smartinfopage gives you innovative technology to reach more people / customers each day.<br>
+        <br>
+  <b>Features</b></p>
+      <ul>
+        <li>Create your tailored digital businss card / mobile website. </li>
+<li>Link to  all of your Social Media Accounts: Facebook, Twitter, LinkedIn, YouTube, Soundcloud etc...</li>
+<li>Choose from a variety of cool designs to make your page stand out.</li>
+<li>One touch dialing of your mobile, text etc.</li>
+<li>GPS enabled Google Maps makes it easy to find you.</li>
+<li>Upload your own images and logo.</li>
+<li>Get your own QR-Code to share on business cards, posters, banners etc...</li>
+<li>and much more...</li>
+      </ul>
+  </div>
+</div>
+
+<div data-role="page" id="contact">
+    <div data-theme="b" data-role="header">
+        <h3>
+            Contact
+        </h3></div>
+        
+    <div data-role="content"><a data-role="button" data-theme="a" href="https://facebook.com/smartinfopage" target="_blank">Visit us on Facebook</a></div>
+    <div data-role="content">
+     <a data-role="button" data-direction="reverse" data-rel="back" data-transition="flow"
+        href="#page1" data-icon="back" data-iconpos="left">
+        
+        
+            Back
+        </a>
+        
+       
+    </div>
+</div>
+
+
+    </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="../jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <script src="../jquery.min.js">
+        </script>
+        <script src="../jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+        <!-- User-generated css -->
+        <style>
+        </style>
+        <!-- User-generated js -->
+        <script>
+            try {
+
+    $(function() {
+
+    });
+
+  } catch (error) {
+    console.error("Your javascript has an error: " + error);
+  }
+        </script>
+		
+		
+		
+		<script>
+
+        /*rotate
+                    desc: Rotate a set of first level child objects based on tag name
+                    params:
+                            id = Rotate elements container id
+                            tag = Tag (nodeName - see textNode issue) of DOM objects to be cycled
+            */
+            function rotate(id, tag)
+            {
+
+                    /*Normalise string for later comparison*/
+                    tag = tag.toLowerCase();
+
+                    /*Get container DOM Object*/
+                    var el = document.getElementById(id),
+                            visibleIdentified = false;
+                            hasBeenSet = false,
+                            firstMatchingChild = false;;
+
+                    /*Iterate over children*/
+                    for(i = 0; i < el.childNodes.length; i++){
+
+                            /*Set child to var for ease of access*/
+                            var child = el.childNodes[i];
+
+                            /*If element has the correct nodeName and is a top level chlid*/
+                            if(child.parentNode == el && child.nodeName.toLowerCase() == tag){
+
+                                    /*Set first matching child in case the rotation is already on the last image*/
+                                    if(!firstMatchingChild)
+                                            firstMatchingChild = child;                
+
+                                    /*If child is visible */
+                                    if(child.style.display == "block"){
+
+                                            /*Take note that the visible element has been identified*/
+                                            visibleIdentified = true;
+
+                                            /*Toggle its visibility (display attribute)*/
+                                            child.style.display = "none";
+
+                                    /*Once the visibile item has been identified*/
+                                    }else if(visibleIdentified){
+
+                                            /*If the next item to become visible has been set*/
+                                            if(hasBeenSet){
+
+                                                    /*Toggle visibility (display attribute)*/
+                                                    child.style.display = "none"
+                                            }
+
+                                            /*Catch the next item to become visible*/
+                                            else{
+
+                                                    /*Toggle visibility (display attribute)*/
+                                                    child.style.display = "block";
+
+                                                    /*Take note that the next item has been made visible*/
+                                                    hasBeenSet = true;
+                                            }
+                                    }
+                            }
+                    }
+
+                    /*If the hasBeenSet is false then the first item is to be made visible
+                      - Only do so if the firstMatchingChild was identified, more or less redundant
+                            exception handling*/
+                    if(!hasBeenSet && firstMatchingChild)
+                                    firstMatchingChild.style.display = "block";
+
+            }
+
+            /*Declare cycle*/
+            setInterval("rotate('smartimages','div')",2000);
+            </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-theme="b" data-role="header">
+                <h1>
+                    smartinfopage
+                </h1>
+            </div>
+            <div data-role="content">
+                <div style=" text-align:center">
+                    <img style="width: 100%;" src="logo_de.png" />
+                </div>
+
+				<div id="smartimages">
+                    <div style="display:block"><img src="woman.png" width="100%"></div>
+					<div style="display:none"><img src="smi2.png" width="100%"></div>
+                    <div style="display:none"><img src="smi1.png" width="100%"></div>  
+					<div style="display:none"><img src="smi3.png" width="100%"></div>
+            </div>
+				
+               
+
+<br>
+
+                <div data-role="fieldcontain">
+                <form>
+                  <select name="Language"  onchange="window.location.href= this.form.Language.options[this.form.Language.selectedIndex].value">
+<option disabled value="">
+                            Language / Sprache
+</option>
+                                 <option value="../starten/index.html">
+                            English
+                        </option><option value="../startde/index.html">
+                            Deutsch
+                        </option>
+   
+                    </select>
+                    
+                   </form>
+
+
+<center><br>
+© 2010 - <script>document.write(new Date().getFullYear())</script>
+ smartinfopage.mobi
+ </center>
+               </div>
+            </div>
+        </div>
+    </body>
+</html>
